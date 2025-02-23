@@ -4,6 +4,7 @@ library(timevis)
 library(htmlwidgets)
 library(webshot2)
 library(tidyverse)
+library(dplyr)
 
 # gs4_auth(path = "my-project-451804-f2c8ebde5fb1.json")
 gs4_auth(path = Sys.getenv("GOOGLE_SHEET_CREDENTIALS"))
@@ -15,7 +16,7 @@ sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXy
 groups <- df |> select(group,groups) |>  arrange(group) |> group_by(group) |> slice_head(n=1) |> ungroup() |> 
   mutate(content =if_else(!groups %in% c('Semi','final'), paste('Group', if_else(group==1,'A','B')), groups),
          id=row_number()
-         ) 
+         ) |> select(-groups) 
 
 # View data
 # head(df)
