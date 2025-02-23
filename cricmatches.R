@@ -4,7 +4,9 @@ library(timevis)
 library(htmlwidgets)
 library(webshot2)
 
-gs4_deauth()
+
+gs4_auth(path = "my-project-451804-f2c8ebde5fb1.json")
+
 # Replace with your Google Sheet URL or Sheet ID
 sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXyvWJtzQyqeaI-i1C3M/edit?gid=0#gid=0"
 
