@@ -10,9 +10,9 @@ sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXy
 df <- read_sheet(sheet_url)
 
 # View data
-head(df)
+# head(df)
 
-tv <- timevis(df,
+tv <- timevis(df,width = "100%",
               options = list(
                 format = htmlwidgets::JS("{ minorLabels: { minute: 'h:mma', hour: 'ha' }}")
               ))

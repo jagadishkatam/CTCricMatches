@@ -1,0 +1,45 @@
+---
+title: "readme"
+author: "Jagadish"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r , include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(googlesheets4)
+library(timevis)
+library(htmlwidgets)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+# Replace with your Google Sheet URL or Sheet ID
+sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXyvWJtzQyqeaI-i1C3M/edit?gid=0#gid=0"
+
+# Read the entire sheet
+df <- read_sheet(sheet_url)
+
+# View data
+# head(df)
+
+timevis(df,width = "100%",
+              options = list(
+                format = htmlwidgets::JS("{ minorLabels: { minute: 'h:mma', hour: 'ha' }}")
+              ))
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+rmarkdown::render("README.Rmd")
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
