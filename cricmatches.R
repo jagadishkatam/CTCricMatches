@@ -13,10 +13,10 @@ gs4_auth(path = Sys.getenv("GOOGLE_SHEET_CREDENTIALS"))
 sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXyvWJtzQyqeaI-i1C3M/edit?gid=0#gid=0"
 
 
-groups <- df |> select(group,groups) |>  arrange(group) |> group_by(group) |> slice_head(n=1) |> ungroup() |> 
+groups <- df |> dplyr::select(group,groups) |>  arrange(group) |> group_by(group) |> slice_head(n=1) |> ungroup() |> 
   mutate(content =if_else(!groups %in% c('Semi','final'), paste('Group', if_else(group==1,'A','B')), groups),
          id=row_number()
-         ) |> select(-groups) 
+         ) |> dplyr::select(-groups) 
 
 # View data
 # head(df)
@@ -33,5 +33,5 @@ tv <- timevis(df,width = "100%",
 saveWidget(tv, "timeline.html", selfcontained = TRUE)
 
 # Take a screenshot and save as an image
-webshot("timeline.html", file = "timeline.png", cliprect = "viewport",vwidth = 1300, vheight = 1200)
+webshot("timeline.html", file = "timeline.png", cliprect = "viewport",vwidth = 1200, vheight = 1200)
 
