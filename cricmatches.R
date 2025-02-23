@@ -2,6 +2,7 @@
 library(googlesheets4)
 library(timevis)
 library(htmlwidgets)
+library(webshot2)
 
 # Replace with your Google Sheet URL or Sheet ID
 sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXyvWJtzQyqeaI-i1C3M/edit?gid=0#gid=0"
@@ -20,3 +21,6 @@ tv <- timevis(df,width = "100%",
 
 # Save the output as an HTML file
 saveWidget(tv, "timeline.html", selfcontained = TRUE)
+
+# Take a screenshot and save as an image
+webshot("timeline.html", file = "timeline.png")
