@@ -3,7 +3,7 @@ library(googlesheets4)
 library(timevis)
 library(htmlwidgets)
 library(webshot2)
-
+library(tidyverse)
 
 # gs4_auth(path = "my-project-451804-f2c8ebde5fb1.json")
 gs4_auth(path = Sys.getenv("GOOGLE_SHEET_CREDENTIALS"))
