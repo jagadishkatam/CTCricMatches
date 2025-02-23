@@ -13,10 +13,14 @@ gs4_auth(path = Sys.getenv("GOOGLE_SHEET_CREDENTIALS"))
 sheet_url <- "https://docs.google.com/spreadsheets/d/19SGRA-yeXmTxM-G24HiyQBAoXyvWJtzQyqeaI-i1C3M/edit?gid=0#gid=0"
 
 
-groups <- df |> dplyr::select(group,groups) |>  arrange(group) |> group_by(group) |> slice_head(n=1) |> ungroup() |> 
+# Read the entire sheet
+df <- read_sheet(sheet_url)
+
+
+groups <- df |> select(group,groups) |>  arrange(group) |> group_by(group) |> slice_head(n=1) |> ungroup() |> 
   mutate(content =if_else(!groups %in% c('Semi','final'), paste('Group', if_else(group==1,'A','B')), groups),
          id=row_number()
-         ) |> dplyr::select(-groups) 
+         ) |> select(-groups) 
 
 # View data
 # head(df)
