@@ -36,11 +36,18 @@ jobs:
           any::timevis
           any::htmlwidgets
           any::webshot2
+    
+    - name: Create Google Service Account JSON
+      run: echo "$GOOGLE_SHEET_CREDENTIALS" > /home/runner/work/service-account.json
+      shell: bash
+      env:
+        GOOGLE_SHEET_CREDENTIALS: ${{ secrets.GOOGLE_SHEET_CREDENTIALS }}
 
-          
     - name: Run R script
-      run: |
-        Rscript cricmatches.R  # Run the R script located in the root directory
+      run: Rscript cricmatches.R
+      env:
+        GOOGLE_SHEET_CREDENTIALS: /home/runner/work/service-account.json
+    
     - name: Commit results
       run: |
         git config --local user.email "actions@github.com"
