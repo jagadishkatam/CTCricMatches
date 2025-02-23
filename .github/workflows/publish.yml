@@ -36,6 +36,7 @@ jobs:
           any::timevis
           any::htmlwidgets
           any::webshot2
+          any::tidyverse
     
     - name: Create Google Service Account JSON
       run: echo "$GOOGLE_SHEET_CREDENTIALS" > /home/runner/work/service-account.json
