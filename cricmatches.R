@@ -37,5 +37,5 @@ tv <- timevis(df,width = "100%",
 saveWidget(tv, "timeline.html", selfcontained = TRUE)
 
 # Take a screenshot and save as an image
-webshot("timeline.html", file = "timeline.png", cliprect = "viewport",vwidth = 2000, vheight = 2200)
+webshot("timeline.html", file = "timeline.png", cliprect = "viewport",vwidth = 1700, vheight = 1800)
 
