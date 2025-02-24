@@ -43,7 +43,12 @@ jobs:
       shell: bash
       env:
         GOOGLE_SHEET_CREDENTIALS: ${{ secrets.GOOGLE_SHEET_CREDENTIALS }}
-
+        
+    - name: Install Chrome
+      run: |
+        sudo apt update
+        sudo apt install -y google-chrome-stable
+        
     - name: Run R script
       run: Rscript cricmatches.R
       env:
