@@ -6,6 +6,8 @@ library(webshot2)
 library(tidyverse)
 library(dplyr)
 
+options(chromote.port = 9222)
+
 # gs4_auth(path = "my-project-451804-f2c8ebde5fb1.json")
 gs4_auth(path = Sys.getenv("GOOGLE_SHEET_CREDENTIALS"))
 
